@@ -1,0 +1,206 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    </head>
+    <body onload="load()">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white navbar-fixed fixed-top mb-10">
+            <div class="container-fluid">
+                <div class="col">
+                    <a class="navbar-brand text-white" href="#"><i class='fa fa-home yellow-color pe-2 ps-2'></i>Hometel PG For Women</a>
+                </div>
+                <div class="col text-white">
+                    <h4>Booking</h4>
+               </div>
+            </div>
+        </nav>
+        <div><h1>hh</h1></div>
+        <div class="container-fluid mt-10 pt-10">
+            <div class="row pt-10 mt-10">
+                <div class="col-sm-auto bg-dark">
+                    <div>
+                        <ul class="nav flex-sm-column text-center align-items-center">
+                            <li>
+                                <a href="dashboard.html" class="nav-link py-3 px-2">
+                                    <i class='fa fa-dashboard pt-10'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="userlist.html" class=" nav-link py-3 px-2">
+                                    <i class='fa-solid fa-user-group'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html" class="nav-link py-3 px-2">
+                                    <i class='fa fa-bed'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="paymentlist.html" class="nav-link py-3 px-2">  
+                                 <i class='fa fa-money'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="bookinglist.html" class="nav-link py-3 px-2">
+                                    <i class='fa-solid fa-calendar-xmark'></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm p-3 min-vh-100" style="background-color:#fef5f5;">
+                     <div class="row pt-3 mb-5">
+                         <div class="col-6 border-top border-bottom border-3 shadow border-danger pt-2">
+                            <div class="row pt-3">
+                                <h5>Choose Room</h5>
+                                <div class="col-6 pb-3">
+                                <p id="demo"></p>
+                                <select id="mySelect">
+                                </select>
+                                </div> 
+                                <div class="col-6"></div>
+                             </div>
+                             <div class="row">
+                               <div class="col-6">
+                                 <label for="fname" class="form-label mb-0">
+                                   <h6>Your First Name</h6>
+                                 </label>
+                                 <input type="text" class="form-control pe-2 mt-0" id="fname" placeholder="Your First Name">
+                               </div>
+                               <div class="col-6">
+                                 <label for="lname" class="form-label mb-0">
+                                   <h6>Your Last Name</h6>
+                                 </label>
+                                 <input type="text" class="form-control mt-0" id="lname" placeholder="Your Last Name">
+                               </div>
+                             </div>
+                             <div class="mt-3">
+                                 <label for="email" class="form-label mb-0">
+                                   <h6>Your Email</h6>
+                                 </label>
+                                 <input type="text" class="form-control mt-0" id="email" placeholder="henry@xyz.com">
+                             </div>
+                             <div class="row mt-3">
+                                 <div class="col-6">
+                                     <label for="mobileno" class="form-label mb-0">
+                                       <h6>Your Mobile Number</h6>
+                                     </label>
+                                     <input type="text" class="form-control pe-2 mt-0" id="mobileno" placeholder="Mobile No">
+                                   </div>
+                                   <div class="col-6">
+                                     <label for="dob" class="form-label mb-0">
+                                       <h6>Your DOB</h6>
+                                     </label>
+                                     <input type="date" class="form-control mt-0" id="dob">
+                                   </div>
+                             </div>
+                             <div class="text-center mt-3 mb-2">
+                                <button type="button" class="btn btn-danger" onclick="bookRoom()">Book Room</button></div>
+                           </div>
+                     <div class="col-6"></div>
+                     </div>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Email</th>
+                            <th scope="col">Room No</th>
+                            <th scope="col">Floor No</th>
+                            <th scope="col">Bed No</th>
+                            <th scope="col">Cost</th>
+                            <th scope="col">Active</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tdata">  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            const bookRoom =()=>{
+                console.log("book room is invoked");
+                let selectedId = document.getElementById("mySelect");
+                let t=selectId.options[selectId.selectedIndex].text;
+                comsole.log(t);
+
+            }
+
+
+
+
+
+
+
+            async function load() {
+                const response1 = await fetch("http://localhost:8080/PG/booking")
+            let data = await response1.json();
+            let i=0;
+            let c=document.createElement("tr");
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            var td3 = document.createElement("td");
+            var td4 = document.createElement("td");
+            var td5 = document.createElement("td");
+            var td6=document.createElement("td");
+            var txt="";
+             for(i=0;i<data.length;i++){
+                c=document.createElement("tr");
+                td1 = document.createElement("td");
+                td2 = document.createElement("td");
+                td3 = document.createElement("td");
+                td4 = document.createElement("td");
+                td5 = document.createElement("td");
+                td6=document.createElement("td");
+                 txt=""; 
+                 txt =data[i]['email'];
+                 td1.innerHTML=txt;
+                 txt="";
+                 txt =data[i]['roomNo'];
+                 td2.innerHTML=txt;
+                 txt="";
+                 txt =data[i]['floorNo'];
+                 td3.innerHTML=txt;
+                 txt="";
+                 txt =data[i]['bedNo'];
+                 td4.innerHTML=txt;
+                 txt="";
+                  txt =data[i]['cost'];
+                 td5.innerHTML=txt;
+                 txt="";
+                 txt=data[i]['isActive'];
+                 if(txt==true){
+                    txt="Yes";
+                 }
+                 else{
+                    txt="No";
+                 }
+                 td6.innerHTML=txt;
+                  c.appendChild(td1);
+                  c.appendChild(td2);
+                  c.appendChild(td3);
+                  c.appendChild(td4);
+                  c.appendChild(td5);
+                  c.appendChild(td6);
+                 //console.log(txt);
+                 document.getElementById("tdata").appendChild(c);
+             }
+            console.log(data);
+           let  response2 = await fetch("http://localhost:8080/PG/vaccantroom")
+            data = await response2.json();
+            console.log(data);
+             i=0;  
+  var x = document.getElementById("mySelect");
+ for(i=0;i<data.length;i++){
+     var option = document.createElement("option");
+     option.value ="Room:" +data[i]['roomNo'] + " Bed:" +data[i]['bedNo'] ;
+    option.text = "Room:" +data[i]['roomNo'] +" Bed:"+ data[i]['bedNo'] ;
+    x.add(option);
+ }
+            } 
+        
+        </script>
+    </body>
+</html>

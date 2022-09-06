@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body onload="dashload()">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark text-white navbar-fixed fixed-top mb-10">
+  <div class="container-fluid">
+    <div class="col">
+      <a class="navbar-brand text-white" href="#"><i class='fa fa-home yellow-color pe-2 ps-2'></i>Hometel PG For Women</a>
+    </div>
+    <div class="col text-white"><h4>Dashboard</h4>
+    </div>
+    </div>
+  </div>
+</nav>
+<div><h1>hh</h1></div>
+<div class="container-fluid mt-10 pt-10">
+  <div class="row pt-10 mt-10">
+    <div class="col-sm-auto bg-dark">
+      <div>
+        <ul class="nav flex-sm-column text-center align-items-center">
+          <li>
+            <a href="dashboard.html" class="nav-link py-3 px-2">
+              <i class='fa fa-dashboard pt-10'></i>
+            </a>
+          </li>
+          <li>
+            <a href="userlist.html" class=" nav-link py-3 px-2">
+              <i class='fa-solid fa-user-group'></i>
+            </a>
+          </li>
+          <li>
+            <a href="index.html" class="nav-link py-3 px-2">
+              <i class='fa fa-bed'></i>
+            </a>
+          </li>
+          <li>
+            <a href="paymentlist.html" class="nav-link py-3 px-2">
+              <i class='fa fa-money'></i>
+            </a>
+          </li>
+          <li>
+            <a href="bookinglist.html" class="nav-link py-3 px-2">
+              <i class='fa-solid fa-calendar-xmark'></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm p-3 min-vh-100" style="background-color:#fef5f5;">
+      <div class="row text-center">
+        <div class="col-2" id="col1">
+         <p>Total Rooms:</p>
+        </div>
+        <div class="col-2" id="col2">
+          <p>Total Beds:</p>
+        </div>
+        <div class="col-2" id="col3">
+          <p>Active Bookings:</p>
+        </div>
+        <div class="col-2" id="col4">
+          <p>Total Payments:</p>
+        </div>
+        <div class="col-2" id="col5">
+          <p>Active Users:</p>
+        </div>
+        <div class="col-2" id="col6">
+          <p>InActive Users:</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+   async function dashload() {
+      let c;
+      let option;
+      let txt;
+      const response1 = await fetch("http://localhost:8080/PG/roomcount")
+      let data1 = await response1.json();
+      console.log("roomcount"+data1);
+      c=document.createElement("div");
+      option = document.createElement("p");
+      txt=data1;
+      option.innerHTML=txt;
+      c.appendChild(option);
+      document.getElementById("col1").append(c);
+      const response2 = await fetch("http://localhost:8080/PG/bedcount")
+      let data2 = await response2.json();
+      console.log("bedcount"+data2);
+      c=document.createElement("div");
+      option = document.createElement("p");
+      txt=data2;
+      option.innerHTML=txt;
+      c.appendChild(option);
+      document.getElementById("col2").append(c);
+      const response3 = await fetch("http://localhost:8080/PG/activebooking")
+      let data3 = await response3.json();
+      console.log("activebooking" +data3);
+      c=document.createElement("div");
+      option = document.createElement("p");
+      txt=data3;
+      option.innerHTML=txt;
+      c.appendChild(option);
+      document.getElementById("col3").append(c);
+      const response4 = await fetch("http://localhost:8080/PG/paymentcount")
+      let data4 = await response4.json();
+
+      c=document.createElement("div");
+      option = document.createElement("p");
+      txt=data4;
+      option.innerHTML=txt;
+      c.appendChild(option);
+      document.getElementById("col4").append(c);
+      console.log("paymentcount"+data4);
+      const response5 = await fetch("http://localhost:8080/PG/activeuser")
+      let data5 = await response5.json();
+      console.log("activeuser" +data5);
+      c=document.createElement("div");
+      option = document.createElement("p");
+      txt=data5;
+      option.innerHTML=txt;
+      c.appendChild(option);
+      document.getElementById("col5").append(c);
+      const response6 = await fetch("http://localhost:8080/PG/inactiveuser")
+      let data6 = await response6.json();
+      console.log("inactiveuser" +data6);
+
+      c=document.createElement("div");
+      option = document.createElement("p");
+      txt=data6;
+      option.innerHTML=txt;
+      c.appendChild(option);
+      document.getElementById("col6").append(c);
+      }
+</script>
+</body>
+</html>

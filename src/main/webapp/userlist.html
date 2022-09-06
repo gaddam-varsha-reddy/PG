@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+        <style>
+            .grid-container {
+              display: grid;
+              grid-template-columns: auto auto auto auto;
+              padding: 10px;
+            }
+            .grid-item {
+              margin:2px;
+              border: 1px solid rgba(0, 0, 0, 0.856);
+              padding: 20px;
+              text-align: center;
+              background-color: white;
+            
+            }
+            #grid{
+                margin:2px;
+              border: 1px solid rgba(0, 0, 0, 0.8);
+              padding: 20px;
+              text-align: center; 
+            }
+            .addColor{
+                background-color: #EBEBEB;
+            }
+            </style>
+    </head>
+    <body onload="loadDoc()">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white navbar-fixed fixed-top mb-10">
+            <div class="container-fluid">
+                <div class="col">
+                    <a class="navbar-brand text-white" href="#"><i class='fa fa-home yellow-color pe-2 ps-2'></i>Hometel PG For Women</a>
+                </div>
+                <div class="col text-white">
+                    <h4>People</h4>
+                </div>
+            </div>
+        </nav>
+       <div><h1>hh</h1></div>
+        <div class="container-fluid mt-10 pt-10">
+            <div class="row pt-10 mt-10">
+                <div class="col-sm-auto bg-dark">
+                    <div>
+                        <ul class="nav flex-sm-column text-center align-items-center">
+                            <li>
+                                <a href="dashboard.html" class="nav-link py-3 px-2">
+                                    <i class='fa fa-dashboard pt-10'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="userlist.html" class=" nav-link py-3 px-2">
+                                    <i class='fa-solid fa-user-group'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html" class="nav-link py-3 px-2">
+                                    <i class='fa fa-bed'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="paymentlist.html" class="nav-link py-3 px-2">  
+                                 <i class='fa fa-money'></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="bookinglist.html" class="nav-link py-3 px-2">
+                                    <i class='fa-solid fa-calendar-xmark'></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm p-3 min-vh-100" style="background-color:#fef5f5;">
+                    <div class="grid-container" id="grid"></div> 
+                </div>
+            </div>
+        </div>
+        <script>
+            async function loadDoc() {
+                const response = await fetch("http://localhost:8080/PG/userdetails")
+            let data = await response.json();
+            let i=0;
+            let c=document.createElement("div");
+            //c.className="grid-item";
+            var option = document.createElement("p");
+            var txt="";
+             for(i=0;i<data.length;i++){
+                c=document.createElement("div");
+                option = document.createElement("p");
+                 txt="";
+                 txt ="First Name:" +data[i]['firstName'];
+                 option.innerHTML=txt;
+                 c.appendChild(option);
+                 option = document.createElement("p");
+                 txt="";
+                 txt="  Last Name:" +data[i]['lastName'];
+                 option.innerHTML=txt;
+                 c.appendChild(option);
+                 option = document.createElement("p");
+                 txt="";
+                 txt="  Mobile No:" +data[i]['mobileNo'];
+                 option.innerHTML=txt;
+                 c.appendChild(option);
+                 option = document.createElement("p");
+                 txt="";
+                 txt="   Email:" + data[i]['email'];
+                 option.innerHTML=txt;
+                 c.appendChild(option);
+                 option = document.createElement("p");
+                 txt="";
+                 txt="   dob:" + data[i]['dob'];
+                 option.innerHTML=txt;
+                 c.appendChild(option);
+                 if(data[i]['isActive']==false){
+                    c.classList.add('addColor')
+                 }
+                 c.classList.add("grid-item");
+                document.getElementById("grid").append(c);
+             }
+            console.log(data);
+            }
+        </script>
+    </body>
+</html>
