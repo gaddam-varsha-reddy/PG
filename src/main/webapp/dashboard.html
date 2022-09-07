@@ -6,6 +6,24 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+  body{
+  font-family="NeoSansPro";
+  }
+  #grid1:hover{
+  box-shadow: 0 3px 15px 0 black;
+  border:1px solid 	black;
+  }
+<!--  box-shadow: 5px 5px  black;-->
+<!--}-->
+<!--.card{-->
+<!--  padding: 1em;-->
+<!--}-->
+<!--card:hover {-->
+<!--    box-shadow: 0 3px 15px 0 rgb(0 0 0 / 50%);-->
+<!-- -->
+<!--}-->
+</style>
 </head>
 <body onload="dashload()">
 <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white navbar-fixed fixed-top mb-10">
@@ -52,25 +70,65 @@
         </ul>
       </div>
     </div>
-    <div class="col-sm p-3 min-vh-100" style="background-color:#fef5f5;">
-      <div class="row text-center">
-        <div class="col-2" id="col1">
-         <p>Total Rooms:</p>
+    <div class="col-sm ps-5 pt-3 min-vh-100" style="background-color:#f3f6f9;">
+      <h4>Overall Summary</h4>
+      <div class="row pb-3 text-secondary" >
+        <div class="col-3 ">
+          <div class=" bg-white  m-3 p-5 shadow-lg p-3 mb-5 bg-body rounded" id="grid1">
+            <div class="row">
+              <div class="col-4" id="col1">
+                <p>Total Rooms:</p>
+              </div>
+              <div class="col-8">
+                <img src="images/dashroom.jpg" height="140" width="100%">
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-2" id="col2">
-          <p>Total Beds:</p>
+
+          <div class="col-3 border p-4 m-2 bg-white shadow-lg" >
+            <div class="grid1">
+            <div class="row">
+              <div class="col-4" id="col2"><p>Total Beds:</p></div>
+              <div class="col-8">
+                <img src="images/dashbed.jpg" height="150">
+              </div>
+            </div>
+            </div>
+          </div>
+      </div>
+      <h5>At a glance</h5>
+      <div class="row text-secondary">
+        <div class="col-3 border p-4 m-2 bg-white shadow-lg">
+          <div class="row">
+            <div class="col-4" id="col3"><p>Active Bookings:</p></div>
+            <div class="col-8">
+              <img src="images/dashbooking.jpg" height="100">
+            </div>
+          </div>
+
+
         </div>
-        <div class="col-2" id="col3">
-          <p>Active Bookings:</p>
+        <div class="col-3 border p-4 m-2 bg-white shadow-lg">
+          <div class="row">
+            <div class="col-4" id="col4"><p>Total Payments:</p></div>
+            <div class="col-8">
+              <img src="images/dashpay.jpg" height="120">
+            </div>
+
         </div>
-        <div class="col-2" id="col4">
-          <p>Total Payments:</p>
         </div>
-        <div class="col-2" id="col5">
-          <p>Active Users:</p>
-        </div>
-        <div class="col-2" id="col6">
-          <p>InActive Users:</p>
+        <div class="col-3 border p-4 m-2 bg-white shadow-lg">
+
+          <div class="row">
+            <div class="col-4" id="col7"><p>Total Floors:</p></div>
+            <div class="col-8">
+              <img src="images/dashfloor.jpg" height="100">
+            </div>
+
+          </div>
+
+
         </div>
       </div>
     </div>
@@ -81,6 +139,7 @@
       let c;
       let option;
       let txt;
+
       const response1 = await fetch("http://localhost:8080/PG/roomcount")
       let data1 = await response1.json();
       console.log("roomcount"+data1);
@@ -118,25 +177,17 @@
       c.appendChild(option);
       document.getElementById("col4").append(c);
       console.log("paymentcount"+data4);
-      const response5 = await fetch("http://localhost:8080/PG/activeuser")
-      let data5 = await response5.json();
-      console.log("activeuser" +data5);
-      c=document.createElement("div");
-      option = document.createElement("p");
-      txt=data5;
-      option.innerHTML=txt;
-      c.appendChild(option);
-      document.getElementById("col5").append(c);
-      const response6 = await fetch("http://localhost:8080/PG/inactiveuser")
-      let data6 = await response6.json();
-      console.log("inactiveuser" +data6);
 
+
+      const response7 = await fetch("http://localhost:8080/PG/inactiveuser")
+      let data7 = await response7.json();
+      console.log("total floors" +data7);
       c=document.createElement("div");
       option = document.createElement("p");
-      txt=data6;
+      txt=data7;
       option.innerHTML=txt;
       c.appendChild(option);
-      document.getElementById("col6").append(c);
+      document.getElementById("col7").append(c);
       }
 </script>
 </body>

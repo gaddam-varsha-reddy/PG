@@ -134,4 +134,12 @@
         <servlet-name>PaymentCountServlet</servlet-name>
         <url-pattern>/paymentcount/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>FloorCountServlet</servlet-name>
+        <servlet-class>com.wavemaker.controller.FloorCountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FloorCountServlet</servlet-name>
+        <url-pattern>/floorcount/*</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -77,4 +77,20 @@ public class RoomOperations implements RoomManager {
         }
         return -1;
     }
+    @Override
+    public int floorCount(){
+        Connection connection = MySQLConnectionUtility.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select count(distinct floor_no) from room;");
+            while (resultSet.next()) {
+                int Id = resultSet.getInt("count(distinct floor_no)");
+                return Id;
+            }
+        }
+        catch(Exception e){
+            System.out.println("Exception");
+        }
+        return -1;
+    }
 }

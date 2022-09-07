@@ -8,4 +8,5 @@ public interface RoomManager {
     void addRoom(Room room);
     List<Room> displayOnlyRoom();
     int roomCount();
+    int floorCount();
 }
