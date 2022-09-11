@@ -7,6 +7,9 @@
           integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
+    #hide{
+      display:none;
+      }
       #open{
       display:none;
       }
@@ -88,10 +91,21 @@ display: none;
                 <div class="col-2 ps-0 pe-0">
                     <div class="row">
                         <div class="col-6 pe-0 me-0 ps-0"><p class=" pt-0 mt-0 pb-0 mb-0">Varsha Reddy</p><p class="pb-0 mb-0"></p>Admin</p></div>
-                        <div class="col-6 pe-0 me-0 ps-0"><img src="images/varsha.jpg" height="50px" class="rounded-circle"></div>
+                        <div class="col-6 pe-0 me-0 ps-0"><img src="images/Varsha.jpg" height="50px" class="rounded-circle"></div>
                     </div>
                 </div>
                 <hr>
+            </div>
+            <div id="hide">
+                <div class="toast show">
+                    <div class="toast-header">
+                        Success
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" onclick="toaster()"></button>
+                    </div>
+                    <div class="toast-body">
+                        Payment is added
+                    </div>
+                </div>
             </div>
             <div id="open">
                 <div class="row pt-3 mb-5 ps-3">
@@ -196,6 +210,9 @@ display: none;
     </div>
 </div>
 <script>
+ function toaster(){
+   document.getElementById("hide").style.display="none";
+   }
 function disp(){
         document.getElementById("open").style.display="block";
         document.getElementById("open").className = "modal-open";
@@ -291,6 +308,7 @@ var requestOptions2 = {
   redirect: 'follow'
 };
 await fetch(`http://localhost:8080/PG/payment?bedId=${b1}&monthId=${m1}`,requestOptions2)
+  document.getElementById("hide").style.display="block";
 }
 
 <!--  .then(response => response.text())-->

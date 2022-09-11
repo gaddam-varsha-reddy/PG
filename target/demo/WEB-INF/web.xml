@@ -142,4 +142,13 @@
         <servlet-name>FloorCountServlet</servlet-name>
         <url-pattern>/floorcount/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>searchBookingServlet</servlet-name>
+        <servlet-class>com.wavemaker.controller.searchBookingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>searchBookingServlet</servlet-name>
+        <url-pattern>/searchbooking/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>

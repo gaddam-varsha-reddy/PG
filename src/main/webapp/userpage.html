@@ -7,6 +7,15 @@
           integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
+    .addColor{
+    text-color:black;
+    }
+    #grid{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px
+    }
+
       #open{
       display:none;
       }
@@ -19,6 +28,12 @@
 .bgimg{
     background-image: url(images/navbg.jpg);
 }
+.grid-container {
+              display: grid;
+              padding: 5px;
+              width:70vw;
+            }
+
 .modal-open {
 height: 200vh;
 width: 100vw;
@@ -32,49 +47,34 @@ align-items: center;
 .modal-close {
 display: none;
 }
-   .grid1-item:hover{
-  box-shadow: 0 3px 15px 0 rgb(0 0 0 / 50%);
-  border:2px 2px;
-  }
-            .grid-container {
-              display: grid;
-              grid-template-columns: auto auto auto;
-              padding: 10px;
-            }
-            .grid-item {
-              margin:5px;
-              border: 1px solid rgba(0, 0, 0, 0.856);
-              padding: 5px;
-              text-align: center;
-              background-color: white;
-              border-radius:10px;
-              border: 1px solid white;
+.image .img{
+width:100%;
+}
+   .image {
+    border: 2px;
+    width: 90%;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom:0px;
+    padding-bottom:0px;
+    margin:5px;
+    padding:5px;
+}
+.image p{
+ text-indent: -10000px
+margin-bottom:0px;
+padding-bottom:1px;}
+.image img {
+background-image:url("images/thumbnail.png");
+    width: 100%;
+    height: 150;
+    transition: all 2s ease-in-out;
+}
 
-
-            }
-            .grid-item p{
-            padding-top:1px;
-            margin top:0px;
-            margin-bottom:0px;
-            padding-bottom:2px;
-            }
-            #grid{
-                margin:2px;
-              border: 0px solid white;
-              padding: 20px;
-              text-align: center;
-            }
-            .addColor{
-                background-color: #EBEBEB;
-            }
-            .imag{
-            height:100px;
-            margin-bottom:2px;
-            width:50%;
-            padding-top:5px;
-
-            }
-
+.image:hover img {
+    transform: scale(1.2);
+    cursor: pointer
+}
 
 
 </style>
@@ -132,14 +132,17 @@ display: none;
                 <div class="col-2 ps-0 pe-0">
                     <div class="row">
                         <div class="col-6 pe-0 me-0 ps-0"><p class=" pt-0 mt-0 pb-0 mb-0">Varsha Reddy</p><p class="pb-0 mb-0"></p>Admin</p></div>
-                        <div class="col-6 pe-0 me-0 ps-0"><img src="images/varsha.jpg" height="50px" class="rounded-circle"></div>
+                        <div class="col-6 pe-0 me-0 ps-0"><img src="images/Varsha.jpg" height="50px" class="rounded-circle"></div>
                     </div>
                 </div>
                 <hr>
             </div>
-            <div class="col-sm p-3 min-vh-100" style="background-color:#f3f6f9;">
-                <div id="header"></div>
-                <div class="grid-container text-secondary" id="grid"></div>
+            <div class="col p-3 " style="background-color:#f3f6f9;">
+                <div class="container">
+                    <div class="grid-container text-secondary text-center">
+                        <div id="grid"></div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -150,38 +153,41 @@ async function load() {
                 const response = await fetch("http://localhost:8080/PG/userdetails");
             let data = await response.json();
             let i=0;
-            let c=document.createElement("div");
+            var c=document.createElement("div");
             //c.className="grid-item";
-            var option = document.createElement("p");
+            var option1 = document.createElement("p");
             var img = document.createElement("img");
+            if(`images/${data[0]['firstName']}.jpg`){
             img.src = `images/${data[0]['firstName']}.jpg`;
-<!--            img.classList.add('imag');-->
-<!--            var src = document.getElementById("header");-->
-<!--            src.appendChild(img);-->
+            img.onerror=`this.style.display='none'`;
+            }
+            else{
+            img.src = `images/thumbnail.png`;
+            }
+
             var txt="";
              for(i=0;i<data.length;i++){
                 c=document.createElement("div");
-                option = document.createElement("p");
+                option1 = document.createElement("p");
             img = document.createElement("img");
             img.src = `images/${data[i]['firstName']}.jpg`;
-            img.classList.add('imag');
-                c.appendChild(img);
-            <!--option.appendChild(img);-->
+            img.classList.add('img');
+             c.appendChild(img);
 
-                option = document.createElement("p");
                  txt="";
                  txt =data[i]['firstName'] + " " + data[i]['lastName'];
-                 option.innerHTML=txt;
-                 c.appendChild(option);
-                 option = document.createElement("p");
+                 option1.innerHTML=txt;
+                 c.appendChild(option1);
+                 option2 = document.createElement("p");
                  txt="";
                  txt=data[i]['email'];
-                 option.innerHTML=txt;
-                 c.appendChild(option);
+                 option2.innerHTML=txt;
+
+                 c.appendChild(option2);
                  if(data[i]['isActive']==false){
                     c.classList.add('addColor')
                  }
-                 c.classList.add("grid-item");
+                 c.classList.add("image");
                 document.getElementById("grid").append(c);
              }
             console.log(data);

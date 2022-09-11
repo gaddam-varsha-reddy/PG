@@ -36,6 +36,7 @@ com\wavemaker\manager\implementation\BedOperations.class
 com\wavemaker\controller\InActiveUserCountServlet.class
 com\wavemaker\manager\BedManager.class
 com\wavemaker\model\MonthDetails.class
+com\wavemaker\controller\searchBookingServlet.class
 com\wavemaker\manager\BookingManager.class
 com\wavemaker\controller\BookingServlet.class
 com\wavemaker\controller\PaymentServlet.class

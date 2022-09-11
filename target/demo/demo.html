@@ -1,0 +1,94 @@
+<html>
+<head>
+</head>
+<body>
+<div class="row pt-4">
+    <div class="col-4">
+        <label for="roomno" class="form-label mb-0">
+            <h6>Room No</h6>
+        </label>
+        <input type="text" class="form-control pe-2 mt-0" id="roomno" placeholder="101">
+    </div>
+    <div class="col-4">
+        <label for="floorno" class="form-label mb-0">
+            <h6>Floor No</h6>
+        </label>
+        <input type="text" class="form-control mt-0" id="floorno" placeholder="1">
+    </div>
+    <div class="col-4">
+        <label for="bedno" class="form-label mb-0">
+            <h6>Bed No</h6>
+        </label>
+        <input type="text" class="form-control mt-0" id="bedno" placeholder="max=3">
+    </div>
+
+    <div class="col-4">
+        <label for="email" class="form-label mb-0">
+            <h6>Email</h6>
+        </label>
+        <input type="email" class="form-control mt-0" id="email" placeholder="henry@gmail.com">
+    </div>
+</div>
+<button type="button" onclick="clk()">click</button>
+<script>
+   async function clk(){
+   var requestOptiona1 = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+ var requestOptionsa2 = {
+  method: 'GET',
+  redirect: 'follow'
+};
+var requestOptionsa3 = {
+  method: 'GET',
+  redirect: 'follow'
+};
+var requestOptionsa4 = {
+  method: 'PUT',
+  redirect: 'follow'
+};
+var requestOptionsa5 = {
+  method: 'PUT',
+  redirect: 'follow'
+};
+var requestOptionsa6 = {
+  method: 'POST',
+  redirect: 'follow'
+};
+
+let roomno=document.getElementById("roomno").value;
+let floorno=document.getElementById("floorno").value;
+let bedno=document.getElementById("bedno").value;
+let email=document.getElementById("email").value;
+
+let f=await fetch(`http://localhost:8080/PG/bed?roomNo=${roomno}&floorNo=${floorno}&bedNo=${bedno}`, requestOptiona1)
+let f1=await f.json();
+console.log("bedId" + f1);
+if(f1!=-1){
+
+  let g=await fetch(`http://localhost:8080/PG/searchUser?email=${email}`, requestOptionsa2)
+  let g1=await g.json();
+  console.log("userId" + g1);
+  if(g1!=-1){
+         let h=await fetch(`http://localhost:8080/PG/searchbooking?userId=${g1}&bedId=${f1}`, requestOptionsa3)
+         let h1=await h.json();
+          console.log("bookingId" + h1);
+           if(h1!=-1){
+await fetch(`http://localhost:8080/PG/booking?userId=${g1}&bedId=${f1}`, requestOptionsa4)
+
+console.log("updated booking status");
+await fetch(`http://localhost:8080/PG/bed?bedId=${f1}`, requestOptionsa5)
+
+console.log("updated bed status");
+await fetch(`http://localhost:8080/PG/userdetails?userId=${g1}`, requestOptionsa6)
+console.log("updated user status");
+                 }
+           }
+       }
+  }
+</script>
+</body>
+
+</html>

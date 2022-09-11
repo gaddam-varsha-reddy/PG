@@ -24,4 +24,9 @@ public class UserServlet extends HttpServlet {
         Userdetails userdetails = objectMapper.readValue(request.getReader(), Userdetails.class);
         userdetailsManager.addUser(userdetails);
     }
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int userid=Integer.parseInt(request.getParameter("userId"));
+        userdetailsManager.updateUserStatusVaccant(userid);
+    }
 }
