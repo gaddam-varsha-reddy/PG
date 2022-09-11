@@ -28,7 +28,18 @@ public class BookingOperations implements BookingManager {
         Connection connection = MySQLConnectionUtility.getConnection();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT U.EMAIL,R.ROOM_NO,R.FLOOR_NO,B1.BED_NO ,B1.COST,B.IS_ACTIVE FROM USER U JOIN BOOkING B ON U.ID = B.User_Id JOIN BED B1 ON B.Bed_ID = B1.ID JOIN ROOM R ON B1.Room_ID = R.ID;");
+            ResultSet resultSet = statement.executeQuery("SELECT \n" +
+                    "  U.EMAIL, \n" +
+                    "  R.ROOM_NO, \n" +
+                    "  R.FLOOR_NO, \n" +
+                    "  B1.BED_NO, \n" +
+                    "  B1.COST, \n" +
+                    "  B.IS_ACTIVE \n" +
+                    "FROM \n" +
+                    "  User U \n" +
+                    "  JOIN Booking B ON U.ID = B.User_Id \n" +
+                    "  JOIN Bed B1 ON B.Bed_ID = B1.ID \n" +
+                    "  JOIN Room R ON B1.Room_ID = R.ID;");
             while (resultSet.next()) {
                 String email = resultSet.getString("email");
                 boolean isactive = resultSet.getBoolean("is_active");
@@ -66,7 +77,7 @@ public class BookingOperations implements BookingManager {
             ps.setInt(2,bedid);
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
-                int id = resultSet.getInt("ID");
+                int id = resultSet.getInt("Id");
                 return id;
             }
         }
@@ -80,7 +91,7 @@ public class BookingOperations implements BookingManager {
         Connection connection = MySQLConnectionUtility.getConnection();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select count(*) from booking where is_active=true;");
+            ResultSet resultSet = statement.executeQuery("select count(*) from Booking where is_active=true;");
             while (resultSet.next()) {
                 int Id = resultSet.getInt("count(*)");
                 return Id;
@@ -96,7 +107,7 @@ public class BookingOperations implements BookingManager {
         Connection connection = MySQLConnectionUtility.getConnection();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select count(*) from booking where is_active=false;");
+            ResultSet resultSet = statement.executeQuery("select count(*) from Booking where is_active=false;");
             while (resultSet.next()) {
                 int Id = resultSet.getInt("count(*)");
                 return Id;

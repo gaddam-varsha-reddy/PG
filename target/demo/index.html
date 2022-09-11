@@ -1,0 +1,222 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+        #open{
+        display:none;
+        }
+
+a.nav-link.py-3.px-2 {
+    color: black;
+}
+        #table1 tr:nth-child(even){background-color: #f2f2f2;}
+       #table1 tr:hover {background-color: #ddd;}
+    </style>
+    </head>
+    <body onload="load()">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white navbar-fixed fixed-top mb-10">
+            <div class="container-fluid">
+                <div class="col">
+                    <a class="navbar-brand text-white" href="#"><i class='fa fa-home yellow-color pe-2 ps-2'></i>Hometel PG For Women</a>
+                </div>
+                <div class="col text-white"><h4>Rooms</h4>
+               </div>
+            </div>
+        </nav>
+        <div><h1>hh</h1></div>
+        <div class="container-fluid mt-10 pt-10">
+            <div class="row pt-10 mt-10">
+                <div class="col-sm-auto bg-white">
+                    <div>
+                        <ul class="nav flex-sm-column text-center align-items-center">
+                            <li>
+                                <a href="dashboard.html" class="nav-link py-3 px-2">
+                                    <i class='fa fa-dashboard pt-10'></i>
+                                    <p>DashBoard</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="userlist.html" class=" nav-link py-3 px-2">
+                                    <i class='fa-solid fa-user-group'></i>
+                                    <p>People</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html" class="nav-link py-3 px-2">
+                                    <i class='fa fa-bed'></i>
+                                    <p>Room</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="paymentlist.html" class="nav-link py-3 px-2">  
+                                 <i class='fa fa-money'></i>
+                                    <p>Payment</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="bookinglist.html" class="nav-link py-3 px-2">
+                                    <i class='fa-solid fa-calendar-xmark'></i>
+                                    <p>Booking</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm p-3 min-vh-100" style="background-color:#f3f6f9;">
+                    <div id="open">
+                    <div class="row pt-3 mb-5 ps-3">
+                        <div class="col-3"></div>
+                        <div class="col-5 border-top border-bottom border-1 shadow border-info pt-2">
+                            <div class="row">
+                              <div class="col-4">
+                                <label for="roomno" class="form-label mb-0">
+                                  <h6>Enter Room No</h6>
+                                </label>
+                                <input type="text" class="form-control pe-2 mt-0" id="roomno" placeholder="101">
+                              </div>
+                              <div class="col-4">
+                                <label for="floorno" class="form-label mb-0">
+                                  <h6>Your Floor No</h6>
+                                </label>
+                                <input type="text" class="form-control mt-0" id="floorno" placeholder="1">
+                              </div>
+                              <div class="col-4">
+                                <label for="totalbeds" class="form-label mb-0">
+                                  <h6>Enter Total Beds</h6>
+                                </label>
+                                <input type="text" class="form-control mt-0" id="totalbeds" placeholder="max=3">
+                              </div>
+                            </div>
+                            <div class="text-center mt-3 mb-2"><button type="button" onclick="clk()" class="btn btn-danger">Add Room</button></div>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10"></div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-danger" onclick="disp()">+ Add Room</button></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col">
+                    <table class="table table-striped ps-3 pe-3 mt-5 shadow-lg border border-light border-3">
+                        <thead>
+                          <tr>
+                              <th scope="col">S.No</th>
+                            <th scope="col">Room No</th>
+                            <th scope="col">Floor No</th>
+                            <th scope="col">Total Beds</th>
+                            <th scope="col">Bed No</th>
+                            <th scope="col">Cost</th>
+                            <th scope="col">Occupied</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tdata">  
+                        </tbody>
+                    </table>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        function disp(){
+        document.getElementById("open").style.display="block";
+        }
+            function clk(){
+             document.getElementById("open").style.display="none";
+                var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+console.log("loaded");
+
+var raw = JSON.stringify({
+  "id": 1,
+  "roomNo": document.getElementById("roomno").value,
+  "floorNo": document.getElementById("floorno").value,
+  "totalBeds": document.getElementById("totalbeds").value
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:8080/PG/room", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+            }
+  
+            async function load() {
+                const response = await fetch("http://localhost:8080/PG/room")
+            let data = await response.json();
+            let i=0;
+            let c=document.createElement("tr");
+            var td0 = document.createElement("td");
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            var td3 = document.createElement("td");
+            var td4 = document.createElement("td");
+            var td5 = document.createElement("td");
+            var td6=document.createElement("td");
+            var txt="";
+             for(i=0;i<data.length;i++){
+                c=document.createElement("tr");
+                td0=document.createElement("td");
+                td1 = document.createElement("td");
+                td2 = document.createElement("td");
+                td3 = document.createElement("td");
+                td4 = document.createElement("td");
+                td5 = document.createElement("td");
+                td6=document.createElement("td");
+                txt="";
+                 txt =i+1;
+                 td0.innerHTML=txt;
+                 txt="";
+                 txt =data[i]['roomNo'];
+                 td1.innerHTML=txt;
+                 txt="";
+                 txt =data[i]['floorNo'];
+                 td2.innerHTML=txt;
+                 txt="";
+                 txt =data[i]['totalBeds'];
+                 td3.innerHTML=txt;
+                 txt="";
+                 txt =data[i]['bedNo'];
+                 td4.innerHTML=txt;
+                 txt="";
+                 txt =data[i]['cost'];
+                 td5.innerHTML=txt;
+                 txt="";
+                 txt=data[i]['isFull'];
+                 if(txt==true){
+                    txt="Yes";
+                 }
+                 else{
+                    txt="No";
+                 }
+                 td6.innerHTML=txt;
+                 c.appendChild(td0);
+                  c.appendChild(td1);
+                  c.appendChild(td2);
+                  c.appendChild(td3);
+                  c.appendChild(td4);
+                  c.appendChild(td5);
+                  c.appendChild(td6);
+                 //console.log(txt);
+                 document.getElementById("tdata").appendChild(c);
+             }
+            console.log(data);
+            }
+        </script>
+    </body>
+</html>

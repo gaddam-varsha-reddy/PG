@@ -4,9 +4,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MySQLConnectionUtility {
-    private static String MYSQL_HOST = "jdbc:mysql://localhost:3306/PG";
+    private static String MYSQL_HOST = "jdbc:mysql://18.217.214.158:3306/PG_Project";
     private static String MYSQL_USER_NAME = "root";
-    private static String MYSQL_PASSWORD = "Pramati@123";
+    private static String MYSQL_PASSWORD = "wm9qm75Q1@0b";
     private static Connection connection;
 
     public static Connection getConnection() {

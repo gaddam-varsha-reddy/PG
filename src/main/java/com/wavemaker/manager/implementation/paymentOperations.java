@@ -28,7 +28,7 @@ public class paymentOperations implements paymentManager {
         Connection connection = MySQLConnectionUtility.getConnection();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT R.ROOM_NO,R.FLOOR_NO,B.BED_NO,M.MONTH,M.YEAR FROM ROOM R JOIN BED B ON R.ID = B.Room_ID JOIN PAYMENT P ON B.ID = P.Bed_ID JOIN MONTHDETAILS M ON P.Month_ID = M.ID;");
+            ResultSet resultSet = statement.executeQuery("  SELECT R.ROOM_NO,R.FLOOR_NO,B.BED_NO,M.MONTH,M.YEAR FROM Room R JOIN Bed B ON R.ID = B.Room_ID JOIN Payment P ON B.ID = P.Bed_ID JOIN MonthDetails M ON P.Month_ID = M.ID;");
             while (resultSet.next()) {
                 int roomNo = resultSet.getInt("room_no");
                 int floorNo = resultSet.getInt("floor_no");

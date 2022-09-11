@@ -34,7 +34,7 @@ public class BedOperations implements BedManager {
     @Override
     public void updateBedStatusOccupied(int id){
         Connection connection = MySQLConnectionUtility.getConnection();
-        String sql = "update Bed set isfull=true where id=?";
+        String sql = "update Bed set isfull=true where Id=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
@@ -46,7 +46,7 @@ public class BedOperations implements BedManager {
     @Override
     public void updateBedStatusVaccant(int id){
         Connection connection = MySQLConnectionUtility.getConnection();
-        String sql = "update Bed set isfull=false where id=?";
+        String sql = "update Bed set isfull=false where Id=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
