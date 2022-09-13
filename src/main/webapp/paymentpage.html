@@ -6,37 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
           integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <style>
-    #hide{
-      display:none;
-      }
-      #open{
-      display:none;
-      }
-      .nav-link p {
-  color:white;
-}
-.nav-link h3{
-    color:white;
-}
-.bgimg{
-    background-image: url(images/navbg.jpg);
-}
-.modal-open {
-height: 200vh;
-width: 100vw;
-position: absolute;
-top: 100px;
-background-color: #f3f6f9;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-.modal-close {
-display: none;
-}
-
-</style>
+    <link rel="stylesheet" href="payment.css">
 </head>
 <body onload="load()" class="border border-secondary m-1">
 
@@ -60,7 +30,7 @@ display: none;
                     <li>
                         <a href="userpage.html" class=" nav-link">
 
-                            <p> <i class='fa-solid fa-user-group pe-2'></i>People</p>
+                            <p> <i class='fa-solid fa-user-group pe-2'></i>Customers</p>
                         </a>
                     </li>
                     <li>
@@ -98,44 +68,64 @@ display: none;
             </div>
             <div id="hide">
                 <div class="toast show">
-                    <div class="toast-header">
+                    <div class="toast-header text-success">
                         Success
                         <button type="button" class="btn-close" data-bs-dismiss="toast" onclick="toaster()"></button>
                     </div>
-                    <div class="toast-body">
+                    <div class="toast-body text-success bg-light">
                         Payment is added
                     </div>
                 </div>
             </div>
+            <div class="ps-3">
+                <h3>Payments</h3>
+            </div>
             <div id="open">
-                <div class="row pt-3 mb-5 ps-3">
+                <div class="pt-3 mb-5 ps-3">
 
-                    <div class="col-3 border-2 shadow border-black pt-3">
-                        <div class="row pt-4">
-                            <div class="col-4">
-                                <label for="roomno" class="form-label mb-0">
-                                    <h6>Room No</h6>
-                                </label>
-                                <input type="text" class="form-control pe-2 mt-0" id="roomno" placeholder="101">
+                    <div class="border border-2 shadow border-black pt-3">
+                        <div class="row ps-5 pe-5">
+                            <div class="col-3 pt-2 ">
+                                <h6>Enter Room No</h6>
                             </div>
-                            <div class="col-4">
-                                <label for="floorno" class="form-label mb-0">
-                                    <h6>Floor No</h6>
-                                </label>
-                                <input type="text" class="form-control mt-0" id="floorno" placeholder="1">
+                            <div class="col-9">
+                                <input type="number" class="form-control pe-2 mt-0" id="roomno" placeholder="101" required="true">
                             </div>
-                            <div class="col-4">
-                                <label for="bedno" class="form-label mb-0">
-                                    <h6>Bed No</h6>
-                                </label>
-                                <input type="text" class="form-control mt-0" id="bedno" placeholder="max=3">
+
+                        </div>
+
+                        <div class="row mt-3 ps-5 pe-5">
+                            <div class="col-3 pt-2">
+                                <h6>Select Floor No</h6>
+                            </div>
+                            <div class="col-9">
+                                <select name="floorno" id="floorno" class="form-select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="row pt-4">
-                            <div class="col-6">
-                                <label for="month" class="form-label mb-0">
-                                    <h6>Choose Month</h6>
-                                </label>
+                        <div class="row mt-3 ps-5 pe-5">
+                            <div class="col-3 pt-2">
+                                <h6>Select Bed No</h6>
+                            </div>
+                            <div class="col-9">
+                                <select name="bedno" id="bedno" class="form-select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3 ps-5 pe-5">
+                            <div class="col-3 pt-2">
+                                <h6>Select Month</h6>
+                            </div>
+                            <div class="col-9">
                                 <select name="month" id="month" class="form-select">
                                     <option value="January">January</option>
                                     <option value="February">February</option>
@@ -150,48 +140,52 @@ display: none;
                                     <option value="November">November</option>
                                     <option value="December">December</option>
                                 </select>
-                                <!--                                      <input type="text" class="form-control mt-0" id="month" placeholder="January">      -->
-                            </div>
-                            <div class="col-6">
-                                <label for="year" class="form-label mb-0">
-                                    <h6>Choose Year</h6>
-                                </label>
-                                <!--                                  <input type="text" class="form-control mt-0" id="year" placeholder="Year">-->
-                                <select name="year" id="year" class="form-select">
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                </select>
-                            </div>
 
+                            </div>
                         </div>
+
+                    <div class="row mt-3 ps-5 pe-5">
+                        <div class="col-3 pt-2">
+                            <h6>Select Year</h6>
+                        </div>
+                        <div class="col-9">
+                            <select name="year" id="year" class="form-select">
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                            </select>
+                        </div>
+                    </div>
+
                         <div class="text-center mt-4 mb-4">
-                            <button type="button" onclick="btnclk()" class="btn btn-danger">Add Payment</button>
+
+                            <button type="button" onclick="btnclk()" class="btn btn-outline-success me-2">Save</button>
+                            <button type="button" onclick="location.href='paymentpage.html'"  class="btn btn-outline-danger">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="ps-3">
-                <h3>Payments</h3>
-            </div>
-            <div class="row border border-dark ms-3 me-3 mt-3">
+
+
+            <div id="datahid">
+            <div class=" border border-dark shadow-lg ms-3 me-3 mt-3">
 
                 <div class="row">
                     <div class="col-1 pt-2 text-center mt-4"><i class='fas fa-search'></i></div>
 
-                    <div class="col-9 ps-0 mt-4">
-                        <input class="form-control ms-0" type="text" placeholder="search">
+                    <div class="col-8 ps-0 mt-4">
+                        <input class="form-control ms-0" type="text" placeholder="Search Payment">
                     </div>
-                    <div class="col-2 mt-4">
-                        <button type="button" class="btn btn-danger" onclick="disp()">+Add Payment</button>
+                    <div class="col-3 mt-4">
+                        <button type="button" class="btn btn-danger" onclick="disp()">+ Record Payment</button>
                     </div>
                 </div>
                 <div class="row">
 
-                    <div class="col-12">
-                        <table class="table table-striped mt-4 ms-3 pe-5 mb-5 shadow-lg border border-light  border-3">
+                    <div class="col-11 ms-4 me-2">
+
+                        <table class="table table-striped mt-4 pe-3 mb-5 shadow-lg border border-light  border-3">
                             <thead class="ps-3">
                             <tr>
-                                <th scope="col">S.No</th>
                                 <th scope="col">Room No</th>
                                 <th scope="col">Floor No</th>
                                 <th scope="col">Bed No</th>
@@ -203,140 +197,14 @@ display: none;
                             </tbody>
                         </table>
                     </div>
-
+                </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 </div>
-<script>
- function toaster(){
-   document.getElementById("hide").style.display="none";
-   }
-function disp(){
-        document.getElementById("open").style.display="block";
-        document.getElementById("open").className = "modal-open";
-        }
-            async function load() {
-                const response = await fetch("http://localhost:8080/PG/payment")
-            let data = await response.json();
-            let i=0;
-            let c=document.createElement("tr");
-            var td0 = document.createElement("td");
-            var td1 = document.createElement("td");
-            var td2 = document.createElement("td");
-            var td3 = document.createElement("td");
-            var td4 = document.createElement("td");
-            var td5 = document.createElement("td");
-            var txt="";
-             for(i=0;i<data.length;i++){
-                c=document.createElement("tr");
-                td0 = document.createElement("td");
-                td1 = document.createElement("td");
-                td2 = document.createElement("td");
-                td3 = document.createElement("td");
-                td4 = document.createElement("td");
-                td5 = document.createElement("td");
-                txt="";
-                 txt =i+1;
-                 td0.innerHTML=txt;
-                 txt="";
-                 txt =data[i]['roomNo'];
-                 td1.innerHTML=txt;
-                 txt="";
-                 txt =data[i]['floorNo'];
-                 td2.innerHTML=txt;
-                 txt="";
-                 txt =data[i]['bedNo'];
-                 td3.innerHTML=txt;
-                 txt="";
-                 txt =data[i]['month'];
-                 td4.innerHTML=txt;
-                 txt="";
-                 txt =data[i]['year'];
-                 td5.innerHTML=txt;
-                 c.appendChild(td0);
-                  c.appendChild(td1);
-                  c.appendChild(td2);
-                  c.appendChild(td3);
-                  c.appendChild(td4);
-                  c.appendChild(td5);
-                 //console.log(txt);
-                 document.getElementById("tdata").appendChild(c);
-             }
-            console.log(data);
-            }
-<!--            function btnclk(){-->
 
-
-async function btnclk(){
-  var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
-if(document.getElementById("roomno").value.length == 0)
-              {
-               alert("Enter Room No")
-              }
-                if(document.getElementById("floorno").value.length == 0)
-                 {
-                    alert("Enter Floor No")
-                 }
-                      if(document.getElementById("bedno").value.length == 0)
-                       {
-                        alert("Enter Bed No")
-                     }
-document.getElementById("open").style.display="none";
-let year  = document.getElementById("year").value;
-console.log(year);
-let month=document.getElementById("month").value;
-console.log(month);
-let roomno  = document.getElementById("roomno").value;
-console.log("RoomNo"+roomno);
-let floorno=document.getElementById("floorno").value;
-console.log("floorNo"+floorno);
-let bedno=document.getElementById("bedno").value;
-console.log("bedNo" +bedno);
-const monthId=await fetch(`http://localhost:8080/PG/month?month=${month}&year=${year}`, requestOptions)
-const bedId=await fetch(`http://localhost:8080/PG/bed?roomNo=${roomno}&floorNo=${floorno}&bedNo=${bedno}`, requestOptions)
-<!--console.log("month" +await monthId.json());-->
-<!--console.log("bed" +await bedId.json());-->
-let m1=await monthId.json();
-let b1=await bedId.json();
-var requestOptions2 = {
-  method: 'POST',
-  redirect: 'follow'
-};
-await fetch(`http://localhost:8080/PG/payment?bedId=${b1}&monthId=${m1}`,requestOptions2)
-  document.getElementById("hide").style.display="block";
-}
-
-<!--  .then(response => response.text())-->
-<!--  .then(result =>)-->
-<!--  .catch(error => console.log('error', error));-->
-<!--console.log("monthId"+monthId);-->
-<!--console.log("here month year-&#45;&#45;&#45;&#45;");-->
-<!--console.log("here room data&#45;&#45;&#45;&#45;");-->
-
-
-
-
-<!--let bedId;-->
-<!--fetch(`http://localhost:8080/PG/bed?roomNo=${roomno}&floorNo=${floorno}&bedNo=${bedno}`, requestOptions)-->
-<!--  .then(response => response.text())-->
-<!--  .then(result => console.log("bedId"+result))-->
-<!--  .catch(error => console.log('error', error));-->
-
-<!--console.log("bedId" +bedId);-->
-<!--}-->
-
-
-<!--  fetch("http://localhost:8080/PG/payment?bedId=4&monthId=1", requestOptions)-->
-<!--  .then(response => response.text())-->
-<!--  .then(result => console.log(result))-->
-<!--  .catch(error => console.log('error', error));-->
-<!--            }-->
-
-</script>
+<script src="payment.js"></script>
 </body>
 </html>

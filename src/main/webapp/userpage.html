@@ -6,78 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
           integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <style>
-    .addColor{
-    text-color:black;
-    }
-    #grid{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    padding: 10px
-    }
-
-      #open{
-      display:none;
-      }
-      .nav-link p {
-  color:white;
-}
-.nav-link h3{
-    color:white;
-}
-.bgimg{
-    background-image: url(images/navbg.jpg);
-}
-.grid-container {
-              display: grid;
-              padding: 5px;
-              width:70vw;
-            }
-
-.modal-open {
-height: 200vh;
-width: 100vw;
-position: absolute;
-top: 100px;
-background-color: #f3f6f9;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-.modal-close {
-display: none;
-}
-.image .img{
-width:100%;
-}
-   .image {
-    border: 2px;
-    width: 90%;
-    height: 200px;
-    overflow: hidden;
-    margin-bottom:0px;
-    padding-bottom:0px;
-    margin:5px;
-    padding:5px;
-}
-.image p{
- text-indent: -10000px
-margin-bottom:0px;
-padding-bottom:1px;}
-.image img {
-background-image:url("images/thumbnail.png");
-    width: 100%;
-    height: 150;
-    transition: all 2s ease-in-out;
-}
-
-.image:hover img {
-    transform: scale(1.2);
-    cursor: pointer
-}
-
-
-</style>
+    <link rel="stylesheet" href="userpage.css">
 </head>
 <body onload="load()" class="border border-secondary m-1">
 
@@ -101,7 +30,7 @@ background-image:url("images/thumbnail.png");
                     <li>
                         <a href="userpage.html" class=" nav-link">
 
-                            <p> <i class='fa-solid fa-user-group pe-2'></i>People</p>
+                            <p> <i class='fa-solid fa-user-group pe-2'></i>Customers</p>
                         </a>
                     </li>
                     <li>
@@ -137,64 +66,25 @@ background-image:url("images/thumbnail.png");
                 </div>
                 <hr>
             </div>
-            <div class="col p-3 " style="background-color:#f3f6f9;">
+            <div class="ps-4 row">
+               <div class="col-2 pe-0"><h3>Customers-</h3></div>
+                <div class="col-1 ps-0"><span id="count"></span></div>
+                <div class="col-9"></div>
+            </div>
+
+            <div class="col p-3 pt-2 mt-0" style="background-color:#f3f6f9;">
+                <div class="row border border-dark shadow-lg ms-3 me-3 mt-0">
                 <div class="container">
                     <div class="grid-container text-secondary text-center">
                         <div id="grid"></div>
                     </div>
+                </div>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
-<script>
-async function load() {
-                const response = await fetch("http://localhost:8080/PG/userdetails");
-            let data = await response.json();
-            let i=0;
-            var c=document.createElement("div");
-            //c.className="grid-item";
-            var option1 = document.createElement("p");
-            var img = document.createElement("img");
-            if(`images/${data[0]['firstName']}.jpg`){
-            img.src = `images/${data[0]['firstName']}.jpg`;
-            img.onerror=`this.style.display='none'`;
-            }
-            else{
-            img.src = `images/thumbnail.png`;
-            }
-
-            var txt="";
-             for(i=0;i<data.length;i++){
-                c=document.createElement("div");
-                option1 = document.createElement("p");
-            img = document.createElement("img");
-            img.src = `images/${data[i]['firstName']}.jpg`;
-            img.classList.add('img');
-             c.appendChild(img);
-
-                 txt="";
-                 txt =data[i]['firstName'] + " " + data[i]['lastName'];
-                 option1.innerHTML=txt;
-                 c.appendChild(option1);
-                 option2 = document.createElement("p");
-                 txt="";
-                 txt=data[i]['email'];
-                 option2.innerHTML=txt;
-
-                 c.appendChild(option2);
-                 if(data[i]['isActive']==false){
-                    c.classList.add('addColor')
-                 }
-                 c.classList.add("image");
-                document.getElementById("grid").append(c);
-             }
-            console.log(data);
-            }
-
-
-
-</script>
+<script src="userpage.js"></script>
 </body>
 </html>

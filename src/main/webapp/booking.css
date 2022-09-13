@@ -1,0 +1,28 @@
+
+     #hide{
+      display:none;
+      }
+
+       #delform{
+      display:none;
+
+      padding:3px;
+      }
+      #open{
+      display:none;
+      }
+      .nav-link p {
+  color:white;
+}
+.nav-link h3{
+    color:white;
+}
+.bgimg{
+    background-image: url(images/navbg.jpg);
+    height:1200px;
+}
+
+
+.modal-close {
+display: none;
+}

@@ -6,34 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
           integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <style>
-      #open{
-      display:none;
-      }
-      .nav-link p {
-  color:white;
-}
-.nav-link h3{
-    color:white;
-}
-.bgimg{
-    background-image: url(images/navbg.jpg);
-}
-.modal-open {
-height: 200vh;
-width: 100vw;
-position: absolute;
-top: 100px;
-background-color: #f3f6f9;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-.modal-close {
-display: none;
-}
-
-</style>
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body onload="dashload()" class="border border-secondary m-1">
 
@@ -57,7 +30,7 @@ display: none;
                     <li>
                         <a href="userpage.html" class=" nav-link">
 
-                            <p> <i class='fa-solid fa-user-group pe-2'></i>People</p>
+                            <p> <i class='fa-solid fa-user-group pe-2'></i>Customers</p>
                         </a>
                     </li>
                     <li>
@@ -99,7 +72,7 @@ display: none;
                     <div class="grid1">
                         <div class="border p-4 m-2 bg-white shadow-lg">
                             <div class="row">
-                                <div class="col-4" id="col1"><p>Total Rooms:</p></div>
+                                <div class="col-4" id="col1"><p>Rooms</p></div>
                                 <div class="col-8">
                                     <img src="images/room.jpg" height="100">
                                 </div>
@@ -111,9 +84,9 @@ display: none;
                     <div class="grid1">
                         <div class=" border p-4 m-2 bg-white shadow-lg">
                             <div class="row">
-                                <div class="col-4" id="col2"><p>Total Beds:</p></div>
-                                <div class="col-8">
-                                    <img src="images/bed.jpg" height="100">
+                                <div class="col-3" id="col2"><p>Beds</p></div>
+                                <div class="col-9">
+                                    <img src="images/beds.jpg" height="100">
                                 </div>
                             </div>
                         </div>
@@ -127,7 +100,7 @@ display: none;
                     <div class="grid1">
                         <div class=" border p-4 m-2 bg-white shadow-lg">
                             <div class="row">
-                                <div class="col-4" id="col3"><p>Active Bookings:</p></div>
+                                <div class="col-4" id="col3"><p>Active Bookings</p></div>
                                 <div class="col-8">
                                     <img src="images/dashbooking.jpg" height="100">
                                 </div>
@@ -139,9 +112,9 @@ display: none;
                     <div class="grid1">
                         <div class="border p-4 m-2 bg-white shadow-lg">
                             <div class="row">
-                                <div class="col-4" id="col4"><p>Total Payments:</p></div>
-                                <div class="col-8">
-                                    <img src="images/dashpay.jpg" height="100">
+                                <div class="col-5" id="col4"><p>Payments</p></div>
+                                <div class="col-7">
+                                    <img src="images/dashpay.jpg" height="100" width="100%">
                                 </div>
                             </div>
                         </div>
@@ -152,7 +125,7 @@ display: none;
                         <div class=" border p-4 m-2 bg-white shadow-lg">
 
                             <div class="row">
-                                <div class="col-4" id="col7"><p>Total Floors:</p></div>
+                                <div class="col-4" id="col7"><p>Floors</p></div>
                                 <div class="col-8">
                                     <img src="images/floor.jpg" height="100">
                                 </div></div>
@@ -164,61 +137,6 @@ display: none;
             </div>
         </div>
     </div>
-<script>
-    async function dashload() {
-      let c;
-      let option;
-      let txt;
-
-      const response1 = await fetch("http://localhost:8080/PG/roomcount")
-      let data1 = await response1.json();
-      console.log("roomcount"+data1);
-      c=document.createElement("div");
-      option = document.createElement("p");
-      txt=data1;
-      option.innerHTML=txt;
-      c.appendChild(option);
-      document.getElementById("col1").append(c);
-      const response2 = await fetch("http://localhost:8080/PG/bedcount")
-      let data2 = await response2.json();
-      console.log("bedcount"+data2);
-      c=document.createElement("div");
-      option = document.createElement("p");
-      txt=data2;
-      option.innerHTML=txt;
-      c.appendChild(option);
-      document.getElementById("col2").append(c);
-      const response3 = await fetch("http://localhost:8080/PG/activebooking")
-      let data3 = await response3.json();
-      console.log("activebooking" +data3);
-      c=document.createElement("div");
-      option = document.createElement("p");
-      txt=data3;
-      option.innerHTML=txt;
-      c.appendChild(option);
-      document.getElementById("col3").append(c);
-      const response4 = await fetch("http://localhost:8080/PG/paymentcount")
-      let data4 = await response4.json();
-
-      c=document.createElement("div");
-      option = document.createElement("p");
-      txt=data4;
-      option.innerHTML=txt;
-      c.appendChild(option);
-      document.getElementById("col4").append(c);
-      console.log("paymentcount"+data4);
-
-
-      const response7 = await fetch("http://localhost:8080/PG/floorcount")
-      let data7 = await response7.json();
-      console.log("total floors" +data7);
-      c=document.createElement("div");
-      option = document.createElement("p");
-      txt=data7;
-      option.innerHTML=txt;
-      c.appendChild(option);
-      document.getElementById("col7").append(c);
-      }
-</script>
+<script src="dashboard.js"></script>
 </body>
 </html>

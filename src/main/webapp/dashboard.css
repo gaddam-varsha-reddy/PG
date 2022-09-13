@@ -1,0 +1,22 @@
+
+      #open{
+      display:none;
+      }
+      .nav-link p {
+  color:white;
+}
+.nav-link h3{
+    color:white;
+}
+.bgimg{
+    background-image: url(images/navbg.jpg);
+}
+.fonts{
+font-weight: bold;
+font-size: 150%;
+}
+
+.modal-close {
+display: none;
+}
+

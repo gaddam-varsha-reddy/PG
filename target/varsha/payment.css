@@ -1,0 +1,29 @@
+
+    #hide{
+      display:none;
+      }
+      #open{
+      display:none;
+      }
+      .nav-link p {
+  color:white;
+}
+.nav-link h3{
+    color:white;
+}
+.bgimg{
+    background-image: url(images/navbg.jpg);
+}
+.modal-open {
+height: 200vh;
+width: 100vw;
+position: absolute;
+top: 100px;
+background-color: #f3f6f9;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.modal-close {
+display: none;
+}

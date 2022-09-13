@@ -1,0 +1,292 @@
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body onload="load()" class="border border-secondary m-1">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 bgimg text-secondary">
+            <div>
+                <ul class="nav flex-sm-column ">
+                    <li>
+                        <a href="#" class="nav-link">
+
+                            <h3><i class='fa fa-home pe-2 mt-4 mb-4'></i>Hometel</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboardpage.html" class="nav-link">
+
+                            <p><i class='fa fa-dashboard pe-2'></i>DashBoard</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="userpage.html" class=" nav-link">
+
+                            <p> <i class='fa-solid fa-user-group pe-2'></i>Customers</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html" class="nav-link">
+
+                            <p><i class='fa fa-bed pe-2'></i>Room</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="paymentpage.html" class="nav-link">
+
+                            <p><i class='fa fa-money pe-2'></i>Payment</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bookingpage.html" class="nav-link">
+
+                            <p><i class='fa-solid fa-calendar-xmark pe-2'></i>Booking</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-10 p-3 min-vh-100" style="background-color:#f3f6f9;">
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="col-1 pe-0 me-0 pt-2 "> <i class='fa fa-bell-o'></i></div>
+                <div class="col-2 ps-0 pe-0">
+                    <div class="row">
+                        <div class="col-6 pe-0 me-0 ps-0"><p class=" pt-0 mt-0 pb-0 mb-0">Varsha Reddy</p><p class="pb-0 mb-0"></p>Admin</p></div>
+                        <div class="col-6 pe-0 me-0 ps-0"><img src="images/Varsha.jpg" height="50px" class="rounded-circle"></div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+            <div id="hide">
+                <div class="toast show">
+                    <div class="toast-header text-success">
+                        Success
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" onclick="toaster()"></button>
+                    </div>
+                    <div class="toast-body bg-light ">
+                        Booking is added
+                    </div>
+                </div>
+            </div>
+            <div class="ps-3">
+                <h3>Bookings</h3>
+            </div>
+            <div id="open">
+                <div class="pt-3 mb-5 ps-3">
+
+                    <div class="border-2 shadow border-black pt-2">
+                        <form name="myForm">
+                            <div class="row pt-3 ms-5 pe-5 ">
+
+                                <div class="row ps-5 pe-5 p-3 d-flex">
+                                    <div class="col-2">
+                                    <label for="fname" class="form-label mb-0 pt-2">
+                                        <h6>First Name</h6>
+                                    </label>
+                                    </div>
+                                    <div class="col-10">
+                                    <input type="text" class="form-control pe-2 mt-0" id="fname"
+                                           placeholder="Your First Name">
+                                    </div>
+                                </div>
+                                <div class="row ps-5 pe-5 p-3">
+                                    <div class="col-2">
+                                    <label for="lname" class="form-label mb-0 pt-2">
+                                        <h6>Last Name</h6>
+                                    </label>
+                                    </div>
+                                    <div class="col-10">
+                                    <input type="text" class="form-control mt-0 " id="lname"
+                                           placeholder="Your Last Name">
+                                    </div>
+                                </div>
+                                <div class="row ps-5 pe-5 p-3">
+                                    <div class="col-2">
+                                    <label for="email" class="form-label mb-0 pt-2">
+                                        <h6>Email</h6>
+                                    </label>
+                                    </div>
+                                    <div class="col-10">
+                                    <input type="email" class="form-control mt-0" id="email"
+                                           placeholder="henry@xyz.com">
+                                    </div>
+
+
+                            </div>
+                            <div class="row ps-5 pe-5 p-3">
+                                <div class="col-2">
+                                <label for="mobileno" class="form-label mb-0 pt-2">
+                                    <h6>Mobile No</h6>
+                                </label>
+                                </div>
+                                <div class="col-10">
+                                <input type="text" class="form-control mt-0" id="mobileno" placeholder="Mobile No">
+                                </div>
+                            </div>
+
+                            <div class="row ps-5 pe-5 p-3">
+                                <div class="col-2">
+                                <label for="dob" class="form-label mb-0 pt-2">
+                                    <h6>DOB</h6>
+                                </label>
+                                </div>
+                                <div class="col-10">
+                                <input type="date" class="form-control mt-0" id="dob">
+                                </div>
+                            </div>
+                            <div class="row ps-5 pe-5 p-3">
+                                <div class="col-2">
+                                <label for="demo" class="form-label mb-0 pb-0 pt-2"><h6>Choose Room:</h6></label>
+                                </div>
+                                <div class="col-10">
+                                <p id="demo" class="mt-0 pt-0"></p>
+                                <select id="mySelect" class="form-select">
+                                </select>
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="row mt-4 mb-4">
+                                <div class="col-8"></div>
+                                <div class="col-2">
+                                <button type="button" class="btn btn-outline-success mb-5 pe-0" onclick="bookRoom()">Save</button>
+                                </div>
+                                <div class="col-2">
+                                <button type="button" onclick="location.href='bookingpage.html'" class="btn btn-outline-danger mb-5 ps-0" >Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+            </div>
+
+
+
+            <div id="delform">
+                <div class=" pt-3 mb-5 ps-3">
+
+                    <div class=" border border-2 shadow border-black pt-3">
+                        <div class="row ps-5 pe-5">
+                            <div class="col-3 pt-2">
+                                <h6>Enter Room No</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="number" class="form-control pe-2 mt-0" id="roomno" placeholder="101" required="true">
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-3 ps-5 pe-5">
+                            <div class="col-3 pt-2">
+                                <h6>Choose Floor No</h6>
+                            </div>
+                            <div class="col-9">
+                                <select name="floorno" id="floorno" class="form-select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="row mt-3 ps-5 pe-5">
+                            <div class="col-3 pt-2">
+                                <h6>Select Bed No</h6>
+                            </div>
+                            <div class="col-9">
+                                <select name="bedno" id="bedno" class="form-select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3 ps-5 pe-5">
+                            <div class="col-3 pt-2">
+                                <h6>Enter Email</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="email" class="form-control mt-0" id="emailid" placeholder="henry@gmail.com" required="true">
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-3 mb-2">
+                            <div class="col-8"></div>
+                            <div class="col-2">
+                            <button type="button" onclick="location.href='bookingpage.html'" class="btn btn-outline-danger mb-5 pe-0" >Cancel</button>
+                            </div>
+                            <div class="col-2">
+                            <button type="button" onclick="delbook()" class="btn btn-outline-success me-2 mb-5 ps-0">Save</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="middlediv">
+            <div class="row border border-dark shadow-lg ms-3 me-3 mt-3">
+
+
+                <div class="row">
+                    <div class="col-1 pt-2 text-center mt-4"><i class='fas fa-search'></i></div>
+
+                    <div class="col-8 ps-0 mt-4">
+                        <input class="form-control ms-0" type="text" placeholder="Search Booking">
+                    </div>
+
+                    <div class="col-2 mt-4 ms-0 ps-2">
+                        <button type="button"  class="btn btn-outline-danger p-1 pb-2"  onclick="formopen()">
+                            <i class='fa fa-sign-out'></i> CheckOut</button>
+                    </div>
+                    <div class="col-1 mt-4 pe-0 me-0 ps-0">
+                        <button type="button" class="btn btn-danger" onclick="disp()">+Book</button>
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-12">
+                        <table class="table table-striped mt-4  pe-5 mb-5 shadow-lg border border-light  border-3">
+                            <thead class="ps-3">
+                            <tr>
+                                <th scope="col">Booking ID</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Room No</th>
+                                <th scope="col">Floor No</th>
+                                <th scope="col">Bed No</th>
+                                <th scope="col">Cost</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tdata">
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<script src="booking.js"></script>
+</body>
+</html>
