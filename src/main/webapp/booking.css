@@ -1,6 +1,9 @@
 
      #hide{
       display:none;
+      position:absolute;
+      bottom:0px;
+      right:0px;
       }
 
        #delform{

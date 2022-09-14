@@ -1,4 +1,5 @@
-var path="http://3.19.32.109:8080/";
+var path="http://3.19.32.109:8080/varsha";
+//var path="http://localhost:8080/PG";
 function formopen(){
 document.getElementById("delform").style.display="block";
 document.getElementById("middlediv").style.display = "none";
@@ -53,28 +54,28 @@ let floorno=document.getElementById("floorno").value;
 let bedno=document.getElementById("bedno").value;
 let email=document.getElementById("emailid").value;
 
-let f=await fetch(`${path}varsha/bed?roomNo=${roomno}&floorNo=${floorno}&bedNo=${bedno}`, requestOptiona1)
+let f=await fetch(`${path}/bed?roomNo=${roomno}&floorNo=${floorno}&bedNo=${bedno}`, requestOptiona1)
 let f1=await f.json();
 console.log("bedId" + f1);
 if(f1!=-1){
 
-  let g=await fetch(`${path}varsha/searchUser?email=${email}`, requestOptionsa2)
+  let g=await fetch(`${path}/searchUser?email=${email}`, requestOptionsa2)
   let g1=await g.json();
   console.log("userId" + g1);
   if(g1!=-1){
-         let h=await fetch(`${path}varsha/searchbooking?userId=${g1}&bedId=${f1}`, requestOptionsa3)
+         let h=await fetch(`${path}/searchbooking?userId=${g1}&bedId=${f1}`, requestOptionsa3)
          let h1=await h.json();
           console.log("bookingId" + h1);
            if(h1!=-1){
-await fetch(`${path}varsha/booking?userId=${g1}&bedId=${f1}`, requestOptionsa4)
+await fetch(`${path}/booking?userId=${g1}&bedId=${f1}`, requestOptionsa4)
 
 console.log("updated booking status");
-await fetch(`${path}varsha/bed?bedId=${f1}`, requestOptionsa5)
+await fetch(`${path}/bed?bedId=${f1}`, requestOptionsa5)
 
 console.log("updated bed status");
-await fetch(`${path}varsha/userdetails?userId=${g1}`, requestOptionsa6)
+await fetch(`${path}/userdetails?userId=${g1}`, requestOptionsa6)
 console.log("updated user status");
-
+document.getElementById("delform").style.display="none";
                  }
            }
        }
@@ -133,18 +134,18 @@ console.log("updated user status");
   body: t,
   redirect: 'follow'
 };
-          await fetch(`${path}varsha/userdetails`, requestOptions5)
-const a=await fetch(`${path}varsha/searchUser?email=${email}`, requestOptions1)
+          await fetch(`${path}/userdetails`, requestOptions5)
+const a=await fetch(`${path}/searchUser?email=${email}`, requestOptions1)
 const userId=await a.json();
 console.log("userId" +userId);
-await fetch(`${path}varsha/booking?userId=${userId}&bedId=${bedId}`,requestOptions5)
+await fetch(`${path}/booking?userId=${userId}&bedId=${bedId}`,requestOptions5)
 
 var requestOptions9 = {
   method: 'POST',
   redirect: 'follow'
 };
 
- await fetch(`${path}varsha/bed?bedId=${bedId}`, requestOptions9)
+ await fetch(`${path}/bed?bedId=${bedId}`, requestOptions9)
   document.getElementById("hide").style.display="block";
 
 <!-- var requestOptions9 = {-->
@@ -152,7 +153,7 @@ var requestOptions9 = {
 <!--  redirect: 'follow'-->
 <!--};-->
 
-<!--fetch(`${path}varsha/bed?bedId=${}`, requestOptions9)-->
+<!--fetch(`${path}/bed?bedId=${}`, requestOptions9)-->
 <!--  .then(response => response.text())-->
 <!--  .then(result => console.log(result))-->
 <!--  .catch(error => console.log('error', error));-->
@@ -163,7 +164,7 @@ var requestOptions9 = {
             }
 
             async function load() {
-                const response1 = await fetch(`${path}varsha/booking`)
+                const response1 = await fetch(`${path}/booking`)
             let data = await response1.json();
             let i=0;
             let c=document.createElement("tr");
@@ -211,7 +212,7 @@ var requestOptions9 = {
                     txt="Check-in";
                  }
                  else{
-                    txt="check-out";
+                    txt="Check-out";
                  }
                  td6.innerHTML=txt;
                  c.appendChild(td0);
@@ -226,7 +227,7 @@ var requestOptions9 = {
                  document.getElementById("tdata").appendChild(c);
              }
             console.log(data);
-           let  response2 = await fetch(`${path}varsha/vaccantroom`)
+           let  response2 = await fetch(`${path}/vaccantroom`)
             data = await response2.json();
             console.log(data);
              i=0;

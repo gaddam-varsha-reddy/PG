@@ -60,8 +60,8 @@
                 <div class="col-1 pe-0 me-0 pt-2 "> <i class='fa fa-bell-o'></i></div>
                 <div class="col-2 ps-0 pe-0">
                     <div class="row">
-                        <div class="col-6 pe-0 me-0 ps-0"><p class=" pt-0 mt-0 pb-0 mb-0">Varsha Reddy</p><p class="pb-0 mb-0"></p>Admin</p></div>
-                        <div class="col-6 pe-0 me-0 ps-0"><img src="images/Varsha.jpg" height="50px" class="rounded-circle"></div>
+                        <div class="col-6 pe-0 me-0 ps-0"><h6 class=" pt-0 mt-0 pb-0 mb-0">Varsha Reddy</h6><p class="pb-0 mb-0"></p>Admin</p></div>
+                        <div class="col-6 pe-0 me-0 ps-2"><img src="images/Varsha.jpg" height="50px" class="rounded-circle"></div>
                     </div>
                 </div>
                 <hr>
@@ -69,7 +69,7 @@
 
             <div id="hide">
                 <div class="toast show">
-                    <div class="toast-header text-success">
+                    <div class="toast-header bg-success text-white">
                         Success
                         <button type="button" class="btn-close" data-bs-dismiss="toast" onclick="toaster()"></button>
                     </div>
@@ -157,13 +157,13 @@
                             </div>
 
 
-                            <div class="row mt-4 mb-4">
-                                <div class="col-8"></div>
-                                <div class="col-2">
-                                <button type="button" class="btn btn-outline-success mb-5 pe-0" onclick="bookRoom()">Save</button>
+                            <div class="row mt-4 mb-4 me-3">
+                                <div class="col-9"></div>
+                                <div class="col-1">
+                                    <button type="button" onclick="location.href='bookingpage.html'" class="btn btn-outline-danger mb-5" >Cancel</button>
                                 </div>
-                                <div class="col-2">
-                                <button type="button" onclick="location.href='bookingpage.html'" class="btn btn-outline-danger mb-5 ps-0" >Cancel</button>
+                                <div class="col-1">
+                                    <button type="button" class="btn btn-success me-2 mb-5" onclick="bookRoom()">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -227,12 +227,12 @@
                         </div>
 
                         <div class="row mt-3 mb-2">
-                            <div class="col-8"></div>
-                            <div class="col-2">
-                            <button type="button" onclick="location.href='bookingpage.html'" class="btn btn-outline-danger mb-5 pe-0" >Cancel</button>
+                            <div class="col-9"></div>
+                            <div class="col-1">
+                            <button type="button" onclick="location.href='bookingpage.html'" class="btn btn-outline-danger" >Cancel</button>
                             </div>
-                            <div class="col-2">
-                            <button type="button" onclick="delbook()" class="btn btn-outline-success me-2 mb-5 ps-0">Save</button>
+                            <div class="col-1">
+                            <button type="button" onclick="delbook()" class="btn btn-success me-2">Save</button>
                             </div>
                         </div>
                     </div>
@@ -252,11 +252,11 @@
                         <input class="form-control ms-0" type="text" placeholder="Search Booking">
                     </div>
 
-                    <div class="col-2 mt-4 ms-0 ps-2">
-                        <button type="button"  class="btn btn-outline-danger p-1 pb-2"  onclick="formopen()">
+                    <div class="col-2 mt-4 ms-0 ps-3 me-0 pe-0">
+                        <button type="button"  class="btn btn-outline-danger pb-2"  onclick="formopen()">
                             <i class='fa fa-sign-out'></i> CheckOut</button>
                     </div>
-                    <div class="col-1 mt-4 pe-0 me-0 ps-0">
+                    <div class="col-1 mt-4 pe-0 me-0 ps-0 ms-0">
                         <button type="button" class="btn btn-danger" onclick="disp()">+Book</button>
 
                     </div>

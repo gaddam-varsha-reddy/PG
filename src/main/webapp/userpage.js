@@ -1,12 +1,12 @@
-var path="http://3.19.32.109:8080/";
-
+var path="http://3.19.32.109:8080/varsha";
+//var path="http://localhost:8080/PG";
 async function load() {
 let c1;
       let option11;
       let txt1;
-const response11 = await fetch(`${path}varsha/activeuser`)
+const response11 = await fetch(`${path}/activeuser`)
       let data11 = await response11.json();
-      const response12 = await fetch(`${path}varsha/inactiveuser`)
+      const response12 = await fetch(`${path}/inactiveuser`)
             let data12 = await response12.json();
 
       c1=document.createElement("div");
@@ -18,7 +18,7 @@ const response11 = await fetch(`${path}varsha/activeuser`)
             c1.appendChild(option11);
             document.getElementById("count").append(c1);
 
-                const response = await fetch(`${path}varsha/userdetails`);
+                const response = await fetch(`${path}/userdetails`);
             let data = await response.json();
             let i=0;
             var c=document.createElement("div");

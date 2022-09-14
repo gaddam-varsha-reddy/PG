@@ -1,5 +1,6 @@
 
-var path="http://3.19.32.109:8080/";
+var path="http://3.19.32.109:8080/varsha";
+//var path="http://localhost:8080/PG";
  function toaster(){
    document.getElementById("hide").style.display="none";
    }
@@ -9,7 +10,7 @@ function disp(){
         document.getElementById("datahid").style.display="none";
         }
             async function load() {
-                const response = await fetch(`${path}varsha/payment`)
+                const response = await fetch(`${path}/payment`)
             let data = await response.json();
             let i=0;
             let c=document.createElement("tr");
@@ -73,7 +74,7 @@ if(document.getElementById("roomno").value.length == 0)
                         alert("Enter Bed No")
                      }
    else{
-//document.getElementById("open").style.display="none";
+document.getElementById("open").style.display="none";
 document.getElementById("datahid").style.display="block";
 let year  = document.getElementById("year").value;
 console.log(year);
@@ -85,8 +86,8 @@ let floorno=document.getElementById("floorno").value;
 console.log("floorNo"+floorno);
 let bedno=document.getElementById("bedno").value;
 console.log("bedNo" +bedno);
-const monthId=await fetch(`${path}varsha/month?month=${month}&year=${year}`, requestOptions)
-const bedId=await fetch(`${path}varsha/bed?roomNo=${roomno}&floorNo=${floorno}&bedNo=${bedno}`, requestOptions)
+const monthId=await fetch(`${path}/month?month=${month}&year=${year}`, requestOptions)
+const bedId=await fetch(`${path}/bed?roomNo=${roomno}&floorNo=${floorno}&bedNo=${bedno}`, requestOptions)
 <!--console.log("month" +await monthId.json());-->
 <!--console.log("bed" +await bedId.json());-->
 let m1=await monthId.json();
@@ -95,7 +96,7 @@ var requestOptions2 = {
   method: 'POST',
   redirect: 'follow'
 };
-await fetch(`${path}varsha/payment?bedId=${b1}&monthId=${m1}`,requestOptions2)
+await fetch(`${path}/payment?bedId=${b1}&monthId=${m1}`,requestOptions2)
   document.getElementById("hide").style.display="block";
 }
 }
@@ -111,7 +112,7 @@ await fetch(`${path}varsha/payment?bedId=${b1}&monthId=${m1}`,requestOptions2)
 
 
 <!--let bedId;-->
-<!--fetch(`${path}varsha/PG/bed?roomNo=${roomno}&floorNo=${floorno}&bedNo=${bedno}`, requestOptions)-->
+<!--fetch(`${path}/PG/bed?roomNo=${roomno}&floorNo=${floorno}&bedNo=${bedno}`, requestOptions)-->
 <!--  .then(response => response.text())-->
 <!--  .then(result => console.log("bedId"+result))-->
 <!--  .catch(error => console.log('error', error));-->
@@ -120,7 +121,7 @@ await fetch(`${path}varsha/payment?bedId=${b1}&monthId=${m1}`,requestOptions2)
 <!--}-->
 
 
-<!--  fetch(`${path}varsha/PG/payment?bedId=4&monthId=1", requestOptions`)-->
+<!--  fetch(`${path}/PG/payment?bedId=4&monthId=1", requestOptions`)-->
 <!--  .then(response => response.text())-->
 <!--  .then(result => console.log(result))-->
 <!--  .catch(error => console.log('error', error));-->

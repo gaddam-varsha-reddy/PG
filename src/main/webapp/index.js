@@ -1,4 +1,5 @@
-var path="http://3.19.32.109:8080/";
+var path="http://3.19.32.109:8080/varsha";
+//var path="http://localhost:8080/PG";
    function toaster(){
    document.getElementById("hide").style.display="none";
    }
@@ -35,7 +36,7 @@ var requestOptions10 = {
 roomno=document.getElementById("roomno").value;
 floorno=document.getElementById("floorno").value
 console.log(roomno + " " +floorno);
-let b1=await fetch(`${path}varsha/bed?roomNo=${roomno}&floorNo=${floorno}&bedNo=1`, requestOptions10)
+let b1=await fetch(`${path}/bed?roomNo=${roomno}&floorNo=${floorno}&bedNo=1`, requestOptions10)
  b=await b1.json();
  console.log(b);
  if(b==-1){
@@ -56,7 +57,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("${path}varsha/PG/room", requestOptions)
+fetch(`${path}/room`, requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -67,7 +68,7 @@ fetch("${path}varsha/PG/room", requestOptions)
             }
 
             async function load() {
-                const response = await fetch(`${path}varsha/room`)
+                const response = await fetch(`${path}/room`)
             let data = await response.json();
             let i=0;
             let c=document.createElement("tr");
